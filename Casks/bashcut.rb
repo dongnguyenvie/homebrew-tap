@@ -1,6 +1,6 @@
 cask "bashcut" do
-  version "0.0.28"
-  sha256 "4358514d92e8af191e2283d0d2b4f9db8613443cb767638ea0ff523bc550aa05"
+  version "0.0.29"
+  sha256 "52be9471c1d884a32f4337f9047217134407917b4484de35b72d3fe06fd39d32"
 
   url "https://github.com/dongnguyenvie/BashCut/releases/download/v#{version}/BashCut-#{version}.zip"
   name "BashCut"

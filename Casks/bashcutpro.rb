@@ -4,12 +4,23 @@ cask "bashcutpro" do
 
   url "https://github.com/dongnguyenvie/BashCutPro/releases/download/v#{version}/bashcutpro-#{version}-macos-aarch64.dmg"
   name "BashCutPro"
-  desc "Video editor with an AI agent, plugins and batch runs, based on FilmCraft"
+  desc "Video editor with an AI agent, plugins and batch runs (preview)"
   homepage "https://github.com/dongnguyenvie/BashCutPro"
 
+  # BashCutPro ships as pre-releases while it is a preview, and the default strategy skips them.
   livecheck do
     url :url
-    strategy :github_latest
+    regex(/^v?(\d+(?:\.\d+)+)$/i)
+    strategy :github_releases do |json, regex|
+      json.map do |release|
+        next if release["draft"]
+
+        match = release["tag_name"]&.match(regex)
+        next if match.blank?
+
+        match[1]
+      end
+    end
   end
 
   depends_on arch: :arm64
@@ -27,4 +38,10 @@ cask "bashcutpro" do
     "~/Library/Preferences/com.birchapps.bashcutpro.plist",
     "~/Library/Saved Application State/com.birchapps.bashcutpro.savedState",
   ]
+
+  caveats <<~EOS
+    BashCutPro is a preview, still in development.
+    For everyday editing use BashCut, the stable app:
+      brew install --cask dongnguyenvie/tap/bashcut
+  EOS
 end

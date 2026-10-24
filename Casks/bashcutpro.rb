@@ -1,6 +1,6 @@
 cask "bashcutpro" do
-  version "0.12.0"
-  sha256 "063fe62b93e610c935005747e95c1618c3e33ec2da499e40b9547a805e21ccb1"
+  version "0.12.1"
+  sha256 "c556a14de2a7fd0b09207aef6b1af202b10a6e1c3b868704fff7a18c6a300bd5"
 
   url "https://github.com/dongnguyenvie/BashCutPro/releases/download/v#{version}/bashcutpro-#{version}-macos-aarch64.dmg"
   name "BashCutPro"
